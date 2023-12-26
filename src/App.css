@@ -23,10 +23,6 @@ button {
 .container {
   display: flex;
   flex-direction: column;
-<<<<<<< Updated upstream
-=======
-  text-align: center;
->>>>>>> Stashed changes
   border: 5px solid #abcea1;
   width: 350px;
   height: 600px;
@@ -168,12 +164,8 @@ textarea {
 }
 
 .labelMessage {
-<<<<<<< Updated upstream
   display: block;
   width: 400px;
-=======
-  width: 100%;
->>>>>>> Stashed changes
   text-align: left;
   margin-bottom: 10px;
   margin-top: 5px;
