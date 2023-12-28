@@ -1,10 +1,9 @@
-// TaskList.js
-import React from 'react';
-import './App.css';
-import TaskItem from './TaskItem';
+import React from "react";
+import "./App.css";
+import TaskItem from "./TaskItem";
 
 const TaskList = ({ tasks, onEdit, onDelete }) => (
-  <div className='task-list'>
+  <div className="task-list">
     {tasks.map((task, index) => (
       <TaskItem key={index} task={task} onEdit={onEdit} onDelete={onDelete} />
     ))}

@@ -1,13 +1,16 @@
-// TaskItem.js
 import React from "react";
 
 const TaskItem = ({ task, onEdit, onDelete }) => (
   <div className="task">
-    <span className="fw-bold">{task.title}</span>
+    <span className="task-name">{task.title}</span>
     <span className="small text-secondary">{task.date}</span>
     <p>{task.description}</p>
     <div className="options">
-      <button className="edit-button" onClick={() => onEdit(task)}>
+      <button
+        type="button"
+        className="edit-button"
+        onClick={() => onEdit(task)}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           x="0px"
@@ -67,7 +70,11 @@ const TaskItem = ({ task, onEdit, onDelete }) => (
           </g>
         </svg>
       </button>
-      <button className="delete-button" onClick={() => onDelete(task)}>
+      <button
+        type="button"
+        className="delete-button"
+        onClick={() => onDelete(task)}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           x="0px"
