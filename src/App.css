@@ -217,7 +217,10 @@ textarea {
 .task-name,
 p {
   align-items: center;
-  font-weight: 700;
   max-width: 280px;
   word-wrap: break-word;
+}
+
+.task-name {
+  font-weight: 700;
 }

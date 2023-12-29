@@ -16,10 +16,8 @@ function App() {
   });
 
   useEffect(() => {
-    console.log('Fetch data from local storage...');
     const storedTaskData = localStorage.getItem('taskData');
     if (storedTaskData) {
-      console.log('Data found in local storage:', storedTaskData);
       setTaskData(JSON.parse(storedTaskData));
     }
   }, []);
