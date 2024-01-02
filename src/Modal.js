@@ -19,7 +19,7 @@ const Modal = ({ modalForm, modalType, closeModal, handleAddNewTask, handleEditT
           <button type='button' className='button-close' onClick={closeModal}>
             close
           </button>
-          <button type='submit' onClick={modalType === 'add' ? handleAddNewTask : () => handleEditTask(formData)}>
+          <button type='submit' className='button-add' onClick={modalType === 'add' ? handleAddNewTask : () => handleEditTask(formData)}>
             {modalType === 'add' ? 'Add Task' : 'Edit Task'}
           </button>
         </div>

@@ -194,14 +194,18 @@ textarea {
 .button-close,
 .button-edit,
 .button-add {
-  background-color: #808080;
+  border: #abcea159;
   color: #ffffff;
   font-size: 14px;
   font-weight: 400;
 }
 
+.button-close {
+  background-color:gray;
+}
+
 .button-add {
-  background-color: #129012;
+  background-color: #5e5ef8;
 }
 
 .button-edit {
