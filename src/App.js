@@ -118,7 +118,7 @@ function App() {
         </svg>
       </button>
 
-      <h5 className="task-title">Tasks</h5>
+      {taskData.length > 0 && <h5 className="task-title">Tasks</h5>}
 
       <TaskList tasks={taskData} onEdit={(task) => openModal('edit', task)} onDelete={handleDeleteTask} />
 
