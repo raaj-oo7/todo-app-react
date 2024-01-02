@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import './App.css';
 import TaskList from './TaskList';
@@ -6,25 +6,15 @@ import Modal from './Modal';
 import FormInput from './Modalform';
 
 function App() {
+  const storedTaskData = JSON.parse(localStorage.getItem('taskData'))
   const [modalType, setModalType] = useState(null);
-  const [taskData, setTaskData] = useState([]);
+  const [taskData, setTaskData] = useState(storedTaskData || []);
   const [errorMessage, setErrorMessage] = useState('');
   const [formData, setFormData] = useState({
     title: '',
     date: '',
     description: '',
   });
-
-  useEffect(() => {
-    const storedTaskData = localStorage.getItem('taskData');
-    if (storedTaskData) {
-      setTaskData(JSON.parse(storedTaskData));
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('taskData', JSON.stringify(taskData));
-  }, [taskData]);
 
   const openModal = (type, taskData) => {
     setModalType(type);
@@ -57,27 +47,27 @@ function App() {
 
     setErrorMessage('');
     const newTask = { ...formData, id: uuidv4() };
-    setTaskData([...taskData, newTask]);
+    const updatedTaskData = [...taskData, newTask];
+    setTaskData(updatedTaskData);
+    saveToLocalStorage(updatedTaskData);
     closeModal();
   };
 
   function handleEditTask(updatedTask) {
-    setTaskData((prevTaskData) => {
-      const updatedTaskData = [...prevTaskData];
-      const index = updatedTaskData.findIndex((task) => task.id === updatedTask.id);
-
-      if (index !== -1) {
-        updatedTaskData[index] = updatedTask;
-        return updatedTaskData;
-      }
-    });
-
+    const updatedTaskData = taskData.map((task) => (task.id === updatedTask.id ? updatedTask : task));
+    setTaskData(updatedTaskData);
+    saveToLocalStorage(updatedTaskData);
     closeModal();
   }
+
+  const saveToLocalStorage = (data) => {
+    localStorage.setItem('taskData', JSON.stringify(data));
+  };
 
   const handleDeleteTask = (taskToDelete) => {
     const updatedTaskData = taskData.filter((task) => task !== taskToDelete);
     setTaskData(updatedTaskData);
+    saveToLocalStorage(updatedTaskData);
   };
 
   const modalForm = (
